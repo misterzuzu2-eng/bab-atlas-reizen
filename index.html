@@ -1,0 +1,365 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Bab Atlas Reizen: groepsreizen, singlereizen en stedentrips naar Marokko.">
+<style>body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Bab Atlas Reizen</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gloock&family=Figtree:wght@400;500;600;700&family=Amiri&display=swap">
+<style>
+/* Layout: one calm column — photo hero with a two-field search, then categories, trips, three reasons, contact. Nothing else. */
+:root{
+  --bg:#FBF8F4; --surface:#FFFFFF; --sunk:#F2ECE3; --ink:#1B2140; --muted:#565B7A; --line:#E4DCCF;
+  --majorelle:#3546C8; --on-majorelle:#FFFFFF; --saffron:#E0A03A; --terra:#B8502F; --mint:#2A7A67;
+  --f-display:"Gloock", Georgia, serif; --f-body:"Figtree", system-ui, -apple-system, "Segoe UI", sans-serif; --f-ar:"Amiri", serif;
+  --shadow:0 1px 2px rgba(20,24,60,.06), 0 12px 30px -14px rgba(20,24,60,.22);
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#10132A; --surface:#181C38; --sunk:#0C0F22; --ink:#EEEBF8; --muted:#A8ADCB; --line:#2A2F55;
+  --majorelle:#8B98F7; --on-majorelle:#0C0F22; --saffron:#F0B85A; --terra:#E8876A; --mint:#62C2AA;
+  --shadow:0 1px 2px rgba(0,0,0,.3), 0 12px 30px -14px rgba(0,0,0,.6); color-scheme:dark }}
+:root[data-theme="dark"]{
+  --bg:#10132A; --surface:#181C38; --sunk:#0C0F22; --ink:#EEEBF8; --muted:#A8ADCB; --line:#2A2F55;
+  --majorelle:#8B98F7; --on-majorelle:#0C0F22; --saffron:#F0B85A; --terra:#E8876A; --mint:#62C2AA;
+  --shadow:0 1px 2px rgba(0,0,0,.3), 0 12px 30px -14px rgba(0,0,0,.6); color-scheme:dark }
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:17px;line-height:1.55}
+h1,h2,h3{font-family:var(--f-display);font-weight:400;line-height:1.12;margin:0;text-wrap:balance}
+p{margin:0}
+button,input,select{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--saffron);outline-offset:2px;border-radius:8px}
+.wrap{max-width:1140px;margin-inline:auto;padding-inline:20px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:50px;padding:0 24px;border-radius:999px;border:0;font-weight:700;font-size:1rem;cursor:pointer;text-decoration:none}
+.btn-primary{background:var(--majorelle);color:var(--on-majorelle)}
+.btn-primary:hover{filter:brightness(1.08)}
+.btn-line{background:var(--surface);border:1.5px solid var(--line)}
+.btn-line:hover{border-color:var(--majorelle)}
+
+/* header */
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--surface);border-bottom:1px solid var(--line)}
+header .wrap{display:flex;align-items:center;gap:20px;min-height:68px}
+.logo{display:flex;align-items:center;gap:10px;background:none;border:0;padding:0;cursor:pointer;text-align:left}
+.logo svg{width:30px;height:38px;flex:none}
+.logo b{font-family:var(--f-display);font-weight:400;font-size:1.4rem;display:block;line-height:1}
+.logo small{display:block;font-size:.72rem;color:var(--muted);margin-top:3px}
+nav{display:flex;gap:4px;margin-left:auto}
+nav button{background:none;border:0;padding:10px 14px;border-radius:999px;font-weight:600;cursor:pointer}
+nav button:hover{background:var(--sunk)}
+header .btn{min-height:44px;padding:0 18px}
+@media (max-width:760px){nav{display:none} header .btn{margin-left:auto}}
+
+/* hero */
+.hero{position:relative;color:#fff;min-height:520px;display:flex;align-items:flex-end;overflow:hidden}
+.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 60%}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(14,16,40,.15) 0%,rgba(14,16,40,.25) 40%,rgba(14,16,40,.78) 100%)}
+.hero .wrap{position:relative;z-index:1;width:100%;padding-block:56px 40px}
+.hero .ar{font-family:var(--f-ar);font-size:1.5rem;color:#FFD48A}
+.hero h1{font-size:clamp(2.3rem,5vw,3.8rem);max-width:16ch;margin-top:4px}
+.hero p.lead{font-size:1.15rem;max-width:44ch;margin-top:12px;opacity:.92}
+
+.search{margin-top:26px;background:var(--surface);color:var(--ink);border-radius:20px;padding:12px;display:grid;grid-template-columns:1fr 1fr auto;gap:10px;max-width:780px;box-shadow:var(--shadow)}
+.search label{display:block;font-size:.78rem;font-weight:700;color:var(--muted);margin:0 0 4px 4px}
+.search select{width:100%;min-height:50px;background:var(--sunk);border:1.5px solid transparent;border-radius:12px;padding:0 12px;font-weight:600}
+.search select:focus{outline:none;border-color:var(--majorelle)}
+.search .btn{align-self:end}
+@media (max-width:640px){.search{grid-template-columns:1fr}.hero{min-height:0}}
+
+/* sections */
+section{padding-block:60px 0}
+.head{margin-bottom:24px}
+.head h2{font-size:clamp(1.8rem,3.2vw,2.4rem)}
+.head p{color:var(--muted);margin-top:6px}
+
+.cats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.cat{position:relative;border:0;padding:0;border-radius:999px 999px 18px 18px;overflow:hidden;aspect-ratio:3/4;cursor:pointer;color:#fff;text-align:left;max-width:100%}
+.cat img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.cat:hover img{transform:scale(1.05)}
+.cat::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,rgba(14,16,40,.8))}
+.cat span{position:absolute;left:16px;right:16px;bottom:16px;z-index:1}
+.cat b{display:block;font-family:var(--f-display);font-weight:400;font-size:1.45rem;line-height:1.1}
+.cat small{font-size:.9rem;opacity:.9}
+@media (max-width:760px){.cats{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px;align-items:center}
+.chip{min-height:42px;padding:0 16px;border-radius:999px;border:1.5px solid var(--line);background:var(--surface);font-weight:600;cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--bg)}
+.count{color:var(--muted);font-size:.95rem;margin-left:auto}
+.clear{background:none;border:0;color:var(--majorelle);font-weight:700;cursor:pointer;text-decoration:underline;padding:8px}
+
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+@media (max-width:960px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:600px){.grid{grid-template-columns:1fr}}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:16px;overflow:hidden;display:flex;flex-direction:column}
+.card .img{aspect-ratio:3/2;overflow:hidden;background:var(--sunk);position:relative;max-width:100%}
+.card .img img{width:100%;height:100%;object-fit:cover;display:block}
+.card .type{position:absolute;top:12px;left:12px;background:var(--surface);color:var(--ink);font-size:.8rem;font-weight:700;padding:5px 11px;border-radius:999px}
+.card .body{padding:16px 18px 18px;display:flex;flex-direction:column;gap:6px;flex:1}
+.card h3{font-size:1.35rem}
+.card .info{color:var(--muted);font-size:.95rem}
+.card .row{margin-top:auto;padding-top:14px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.card .row small{display:block;color:var(--muted);font-size:.8rem}
+.card .row strong{font-family:var(--f-display);font-weight:400;font-size:1.6rem;font-variant-numeric:tabular-nums}
+.card .btn{min-height:46px;padding:0 20px}
+.empty{grid-column:1/-1;text-align:center;padding:40px;border:1.5px dashed var(--line);border-radius:16px;color:var(--muted)}
+
+.why{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.why div{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:22px}
+.why b{display:block;font-size:1.08rem;margin-bottom:6px}
+.why p{color:var(--muted);font-size:.97rem}
+.why svg{width:30px;height:30px;color:var(--mint);margin-bottom:10px}
+@media (max-width:760px){.why{grid-template-columns:1fr}}
+
+.contact{margin-top:60px;background:var(--sunk);border-radius:24px;padding:36px;display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}
+.contact h2{font-size:1.9rem}
+.contact p{color:var(--muted);margin-top:6px}
+.contact .nums{display:grid;gap:6px;font-size:1.1rem;font-weight:700}
+.contact .nums span{font-weight:400;color:var(--muted);font-size:.9rem;margin-right:8px}
+
+footer{padding-block:36px;color:var(--muted);font-size:.85rem;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+footer p{max-width:70ch}
+
+/* trip panel */
+.overlay{position:fixed;inset:0;z-index:50;background:rgba(10,12,30,.55);display:flex;justify-content:center;align-items:flex-start;overflow-y:auto;padding:calc(16px + env(safe-area-inset-top,0px)) 16px 16px}
+.panel{background:var(--bg);border-radius:20px;width:100%;max-width:640px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.35)}
+.panel .img{aspect-ratio:2/1;position:relative;background:var(--sunk);max-width:100%}
+.panel .img img{width:100%;height:100%;object-fit:cover;display:block}
+.x{position:absolute;top:12px;right:12px;width:44px;height:44px;border-radius:999px;border:0;background:var(--surface);font-size:1.5rem;cursor:pointer;box-shadow:var(--shadow)}
+.panel .in{padding:24px}
+.panel h2{font-size:1.9rem}
+.panel .info{color:var(--muted);margin-top:4px}
+.panel .intro{margin-top:14px}
+.panel ul{margin:16px 0 0;padding:0;list-style:none;display:grid;gap:8px}
+.panel li{display:flex;gap:10px}
+.panel li::before{content:"✓";color:var(--mint);font-weight:700}
+.form{margin-top:22px;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:18px;display:grid;gap:12px}
+.form h3{font-family:var(--f-body);font-weight:700;font-size:1.1rem}
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media (max-width:480px){.pair{grid-template-columns:1fr}}
+.form label{display:block;font-size:.85rem;font-weight:700;margin-bottom:4px}
+.form input,.form select{width:100%;min-height:50px;border-radius:12px;border:1.5px solid var(--line);background:var(--bg);padding:0 12px}
+.form input:focus,.form select:focus{outline:none;border-color:var(--majorelle)}
+.total{display:flex;justify-content:space-between;align-items:baseline;border-top:1px dashed var(--line);padding-top:12px}
+.total strong{font-family:var(--f-display);font-weight:400;font-size:1.7rem;font-variant-numeric:tabular-nums}
+.total small{display:block;color:var(--muted);font-size:.82rem}
+.err{color:var(--terra);font-weight:600;font-size:.92rem}
+.done{text-align:center;padding:12px 0}
+.done .ar{font-family:var(--f-ar);font-size:2.2rem;color:var(--terra)}
+.done h3{font-family:var(--f-display);font-weight:400;font-size:1.7rem;margin:4px 0 8px}
+.done p{color:var(--muted)}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<header><div class="wrap">
+  <button class="logo" data-go="top" aria-label="Bab Atlas Reizen, naar boven">
+    <svg viewBox="0 0 34 42" aria-hidden="true"><path d="M3 42V22A14 14 0 0 1 31 22V42Z" fill="var(--majorelle)"/><path d="M8 42V23A9 9 0 0 1 26 23V42Z" fill="var(--saffron)"/><g transform="translate(17 26)" fill="var(--majorelle)"><rect x="-4" y="-4" width="8" height="8"/><rect x="-4" y="-4" width="8" height="8" transform="rotate(45)"/></g></svg>
+    <span><b>Bab Atlas</b><small>Reizen naar Marokko</small></span>
+  </button>
+  <nav aria-label="Hoofdmenu">
+    <button data-go="reizen">Alle reizen</button>
+    <button data-go="waarom">Waarom wij</button>
+    <button data-go="contact">Contact</button>
+  </nav>
+  <button class="btn btn-line" data-go="contact">Bel ons</button>
+</div></header>
+
+<main id="top">
+  <div class="hero">
+    <img src="img/camels.jpg" alt="Karavaan met kamelen door de duinen van de Sahara">
+    <div class="wrap">
+      <div class="ar" lang="ar">مرحبا</div>
+      <h1>Ontdek Marokko met Bab Atlas</h1>
+      <p class="lead">Groepsreizen, singlereizen en stedentrips. Vlucht, verblijf en gids in één boeking.</p>
+      <form class="search" id="search" aria-label="Zoek een reis">
+        <div><label for="sType">Soort reis</label>
+          <select id="sType"><option value="">Alle soorten</option><option value="groep">Groepsreis</option><option value="single">Singlereis</option><option value="stad">Stedentrip</option><option value="ontspanning">Ontspanning</option></select></div>
+        <div><label for="sDest">Waarheen?</label>
+          <select id="sDest"><option value="">Heel Marokko</option></select></div>
+        <button class="btn btn-primary" type="submit">Zoek reizen</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <section>
+      <div class="head"><h2>Hoe wil je reizen?</h2></div>
+      <div class="cats" id="cats"></div>
+    </section>
+
+    <section id="reizen">
+      <div class="head"><h2>Onze reizen</h2><p>Alle prijzen zijn per persoon, inclusief vlucht.</p></div>
+      <div class="filters" id="filters"></div>
+      <div class="grid" id="grid"></div>
+    </section>
+
+    <section id="waarom">
+      <div class="head"><h2>Waarom Bab Atlas?</h2></div>
+      <div class="why">
+        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6z"/><path d="m9 12 2 2 4-4"/></svg><b>Alles geregeld</b><p>Vlucht, hotel of riad, transfers en gids zitten in je reis. Je hoeft niets los te boeken.</p></div>
+        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="8" cy="9" r="3"/><circle cx="16" cy="9" r="3"/><path d="M2 20c.6-3 3-5 6-5s5 2 6 5M14 15c3 0 5.4 2 6 5"/></svg><b>Kleine groepen</b><p>Maximaal 16 reizigers. Op singlereizen deel je zonder toeslag een kamer.</p></div>
+        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg><b>Nederlands aanspreekpunt</b><p>Vragen voor of tijdens je reis? Je belt of appt met ons team in Nederland.</p></div>
+      </div>
+    </section>
+
+    <div class="contact" id="contact">
+      <div><h2>Hulp nodig bij het kiezen?</h2><p>We denken graag met je mee. Maandag t/m zaterdag, 09:00–18:00.</p></div>
+      <div class="nums"><div><span>Bel</span>071 – 000 00 00</div><div><span>Mail</span>info@babatlas.nl</div></div>
+    </div>
+
+    <footer>
+      <span>© 2026 Bab Atlas Reizen · Prototype: prijzen, data en contactgegevens zijn voorbeelden</span>
+      <p>Foto's via Unsplash: Mauro Lima, Nicolas Cool, Paul Macallan, Emma Van Sant, Kyle Frost, Alexander Psiuk, Louis Hansel, Mariza de Alencar e Paiva.</p>
+    </footer>
+  </div>
+</main>
+
+<div class="overlay" id="overlay" hidden><div class="panel" role="dialog" aria-modal="true" aria-labelledby="pTitle" id="panel"></div></div>
+
+<script>
+const fmt=n=>"€ "+n.toLocaleString("nl-NL");
+const MONTHS=["2026-11","2026-12","2027-01","2027-02","2027-03","2027-04","2027-05","2027-06"];
+const MNAME=["januari","februari","maart","april","mei","juni","juli","augustus","september","oktober","november","december"];
+const TYPE={groep:"Groepsreis",single:"Singlereis",stad:"Stedentrip",ontspanning:"Ontspanning"};
+const DEST={marrakech:"Marrakech",fes:"Fes",chefchaouen:"Chefchaouen",sahara:"Sahara",essaouira:"Essaouira",agadir:"Agadir & Taghazout",atlas:"Atlasgebergte"};
+const ALT={camels:"Kamelen in de Sahara",dunes:"Zandduinen bij zonsopkomst",marrakech:"Koutoubia in Marrakech",chefchaouen:"Blauwe straat in Chefchaouen",essaouira:"Vissersboten in Essaouira",fes:"De medina van Fes",riad:"Zwembad in een riad",atlas:"Wandelaar in het Atlasgebergte",surf:"Strand van Taghazout"};
+const img=(k,lazy=true)=>`<img src="img/${k}.jpg" alt="${ALT[k]}" ${lazy?'loading="lazy"':""} decoding="async">`;
+
+const TRIPS = [
+ {id:"koning",title:"Koningssteden van Marokko",type:"groep",kind:"marrakech",days:10,price:1149,pop:1,label:"Bestseller",
+  route:["Marrakech","Rabat","Meknes","Fes","Chefchaouen"],dests:["marrakech","rabat","fes","chefchaouen"],months:["2026-11","2027-02","2027-03","2027-04","2027-05"],max:16,
+  intro:"De klassieke rondreis langs de vier koningssteden, met een blauwe toegift in Chefchaouen.",
+  prog:[["Dag 1","Vlucht naar Marrakech, welkomstdiner in de riad"],["Dag 2","Medina, Bahia-paleis en de Jardin Majorelle"],["Dag 3","Kookles tajine bij een familie in de Kasbah"],["Dag 4–5","Via Rabat naar Meknes en de Romeinse ruïnes van Volubilis"],["Dag 6–7","Fes el-Bali met gids, leerlooierijen en hammam"],["Dag 8–9","Chefchaouen: vrije tijd en wandeling naar de Spaanse moskee"],["Dag 10","Transfer naar Fes of Tanger, terugvlucht"]],
+  incl:["Retourvlucht incl. 20 kg ruimbagage","9 nachten in riads met ontbijt","Nederlandstalige reisleiding","Kookles en hammambezoek","Alle transfers per comfortbus"]},
+ {id:"sahara",title:"Sahara & Atlas avontuur",type:"groep",kind:"camels",days:8,price:995,pop:2,label:"Nacht in de woestijn",
+  route:["Marrakech","Aït Benhaddou","Dadès","Merzouga"],dests:["marrakech","sahara","atlas"],months:["2026-11","2026-12","2027-02","2027-03","2027-04"],max:14,
+  intro:"Over de Tizi n'Tichka-pas naar de duinen van Erg Chebbi. Op de kameel naar je tentenkamp.",
+  prog:[["Dag 1","Aankomst Marrakech, avond op het Djemaa el-Fna"],["Dag 2","Over de Hoge Atlas naar ksar Aït Benhaddou"],["Dag 3","Rozenvallei en de Dadès-kloof"],["Dag 4","Todra-kloof, middag naar Merzouga"],["Dag 5","Kameeltocht, nacht in een berberkamp met Gnaoua-muziek"],["Dag 6–7","Via Ouarzazate terug naar Marrakech"],["Dag 8","Terugvlucht"]],
+  incl:["Retourvlucht","7 nachten (waarvan 1 in woestijnkamp)","Halfpension","Kameeltocht bij zonsondergang","4x4-transport in de woestijn"]},
+ {id:"singlenoord",title:"Singles: Noord-Marokko",type:"single",kind:"chefchaouen",days:9,price:1095,pop:3,label:"Max. 12 singles",
+  route:["Tanger","Tetouan","Chefchaouen","Fes"],dests:["tanger","chefchaouen","fes"],months:["2027-03","2027-04","2027-05","2027-06"],max:12,
+  intro:"Singlereis voor 35–55 jaar. Van de Straat van Gibraltar naar de blauwe stad en de oudste medina van de wereld.",
+  prog:[["Dag 1","Aankomst Tanger, kennismakingsdiner met uitzicht op Spanje"],["Dag 2","Kasbah en Café Hafa, middag Tetouan"],["Dag 3–4","Chefchaouen, wandeling naar de watervallen van Akchour"],["Dag 5–7","Fes: medina, kookles en een avond in een hammam"],["Dag 8","Vrije dag of excursie naar Volubilis"],["Dag 9","Terugvlucht vanuit Fes"]],
+  incl:["Retourvlucht","8 nachten, kamer delen zonder toeslag","Singlereisleider","Kookles en hammam","Groepsdiners op dag 1, 4 en 8"]},
+ {id:"singlesurf",title:"Singles: zon & surf Taghazout",type:"single",kind:"surf",days:8,price:879,pop:5,label:"Ontspannen",
+  route:["Agadir","Taghazout","Paradise Valley","Essaouira"],dests:["agadir","essaouira"],months:["2026-11","2026-12","2027-01","2027-02","2027-03"],max:14,
+  intro:"Winterzon aan de Atlantische kust. Surfles voor beginners, yoga op het dakterras en een dagje Essaouira.",
+  prog:[["Dag 1","Aankomst Agadir, transfer naar surfhouse Taghazout"],["Dag 2–3","Surfles in de ochtend, yoga bij zonsondergang"],["Dag 4","Paradise Valley: zwemmen in de rotspoelen"],["Dag 5","Vrije dag, optioneel hammam"],["Dag 6","Dagtrip naar Essaouira met vismarkt en ramparts"],["Dag 7","Afscheidsdiner op het strand"],["Dag 8","Terugvlucht"]],
+  incl:["Retourvlucht incl. ruimbagage","7 nachten surfhouse met ontbijt","4 surflessen met materiaal","Dagelijkse yoga","Dagtrip Essaouira"]},
+ {id:"marrakech",title:"Stedentrip Marrakech",type:"stad",kind:"marrakech",days:4,price:489,pop:4,label:"Lang weekend",
+  route:["Marrakech"],dests:["marrakech"],months:MONTHS,max:null,
+  intro:"Drie nachten in een riad in de medina, met een stadswandeling op dag 2.",
+  prog:[["Dag 1","Aankomst en transfer naar je riad"],["Dag 2","Stadswandeling met gids: souks, Ben Youssef, Koutoubia"],["Dag 3","Vrije dag: Jardin Majorelle, hammam of Agafay-woestijn"],["Dag 4","Terugvlucht"]],
+  incl:["Retourvlucht","3 nachten riad met ontbijt","Privé-transfers","Stadswandeling met gids"]},
+ {id:"fes",title:"Stedentrip Fes",type:"stad",kind:"fes",days:4,price:459,pop:7,label:"Cultuur",
+  route:["Fes"],dests:["fes"],months:MONTHS,max:null,
+  intro:"Verdwalen in 9.000 steegjes, met een gids die de weg weet.",
+  prog:[["Dag 1","Aankomst, thee op het dakterras"],["Dag 2","Fes el-Bali met gids: Chouara-leerlooierij en Al-Qarawiyyin"],["Dag 3","Vrije dag of excursie naar Meknes"],["Dag 4","Terugvlucht"]],
+  incl:["Retourvlucht","3 nachten riad met ontbijt","Transfers","Medinatour met gids"]},
+ {id:"essaouira",title:"Stedentrip Essaouira",type:"stad",kind:"essaouira",days:5,price:529,pop:8,label:"Aan zee",
+  route:["Essaouira"],dests:["essaouira"],months:MONTHS,max:null,
+  intro:"Witte medina, blauwe vissersboten en de wind van de Atlantische Oceaan.",
+  prog:[["Dag 1","Aankomst via Marrakech, transfer naar de kust"],["Dag 2","Medinawandeling en de haven"],["Dag 3","Arganoliecoöperatie en strand"],["Dag 4","Vrije dag, optioneel paardrijden op het strand"],["Dag 5","Terugvlucht"]],
+  incl:["Retourvlucht","4 nachten riad met ontbijt","Transfers","Bezoek arganoliecoöperatie"]},
+ {id:"hammam",title:"Riad & hammam retreat",type:"ontspanning",kind:"riad",days:6,price:749,pop:6,label:"Wellness",
+  route:["Marrakech","Agafay"],dests:["marrakech"],months:MONTHS,max:null,
+  intro:"Langzaam reizen: een boutique-riad met zwembad, twee hammambehandelingen en een nacht in de stenenwoestijn van Agafay.",
+  prog:[["Dag 1","Aankomst en welkomstthee"],["Dag 2","Traditionele hammam met gommage en arganmassage"],["Dag 3","Vrije dag aan het zwembad"],["Dag 4","Naar Agafay: diner en overnachting in luxe tentenkamp"],["Dag 5","Terug naar de riad, tweede spabehandeling"],["Dag 6","Terugvlucht"]],
+  incl:["Retourvlucht","5 nachten (4 riad, 1 Agafay)","2 spabehandelingen","Halfpension","Privé-transfers"]},
+ {id:"atlas",title:"Atlas retreat Imlil",type:"ontspanning",kind:"atlas",days:7,price:899,pop:9,label:"Bergen & rust",
+  route:["Marrakech","Imlil","Toubkal-vallei"],dests:["atlas","marrakech"],months:["2027-03","2027-04","2027-05","2027-06"],max:null,
+  intro:"Wandelen tussen berberdorpen aan de voet van de Toubkal, slapen in een kasbah met uitzicht.",
+  prog:[["Dag 1","Aankomst Marrakech, transfer naar Imlil"],["Dag 2","Wandeling naar Aroumd met lunch bij een familie"],["Dag 3","Rustdag, broodbakken in de dorpsoven"],["Dag 4","Tocht naar de Tizi n'Mzik-pas met muilezel"],["Dag 5","Yoga en hammam in de kasbah"],["Dag 6","Terug naar Marrakech, avondmarkt"],["Dag 7","Terugvlucht"]],
+  incl:["Retourvlucht","6 nachten kasbah en riad","Volpension in de bergen","Berbergids en muilezel","Hammam"]},
+ {id:"singlesahara",title:"Singles: medina & woestijn",type:"single",kind:"dunes",days:7,price:949,pop:10,label:"Nieuw",
+  route:["Marrakech","Ouarzazate","Merzouga"],dests:["marrakech","sahara"],months:["2026-12","2027-01","2027-03","2027-04"],max:12,
+  intro:"Een week voor singles met Marrakech, de kasbahs van het zuiden en twee nachten in de duinen.",
+  prog:[["Dag 1","Aankomst Marrakech, kennismaking op het dakterras"],["Dag 2","Souks en kookles"],["Dag 3","Naar Ouarzazate, filmstudio's en kasbah Taourirt"],["Dag 4–5","Merzouga: kameeltocht, sandboarden, sterrenkijken"],["Dag 6","Lange rit terug naar Marrakech"],["Dag 7","Terugvlucht"]],
+  incl:["Retourvlucht","6 nachten, kamer delen zonder toeslag","Singlereisleider","Kookles","2 nachten woestijnkamp"]}
+];
+
+
+
+const $=id=>document.getElementById(id);
+const st={type:"",dest:""};
+
+Object.entries(DEST).forEach(([k,v])=>$("sDest").insertAdjacentHTML("beforeend",`<option value="${k}">${v}</option>`));
+
+const CATS=[["groep","Groepsreizen","camels"],["single","Singlereizen","chefchaouen"],["stad","Stedentrips","fes"],["ontspanning","Ontspanning","riad"]];
+$("cats").innerHTML=CATS.map(([k,t,p])=>`<button class="cat" data-type="${k}">${img(p)}<span><b>${t}</b><small>${TRIPS.filter(x=>x.type===k).length} reizen</small></span></button>`).join("");
+
+function render(){
+  const list=TRIPS.filter(t=>(!st.type||t.type===st.type)&&(!st.dest||t.dests.includes(st.dest))).sort((a,b)=>a.pop-b.pop);
+  $("filters").innerHTML=[["","Alles"],...Object.entries(TYPE)].map(([k,v])=>`<button class="chip" data-type="${k}" aria-pressed="${k===st.type}">${v}</button>`).join("")
+    +`<span class="count">${list.length} ${list.length===1?"reis":"reizen"}${st.dest?" naar "+DEST[st.dest]:""}</span>`
+    +((st.type||st.dest)?`<button class="clear" id="clear">Wis filters</button>`:"");
+  $("grid").innerHTML=list.length?list.map(t=>`<article class="card">
+      <div class="img">${img(t.kind)}<span class="type">${TYPE[t.type]}</span></div>
+      <div class="body"><h3>${t.title}</h3><div class="info">${t.days} dagen · ${t.route.join(", ")}</div>
+      <div class="row"><div><small>vanaf p.p.</small><strong>${fmt(t.price)}</strong></div>
+      <button class="btn btn-primary" data-trip="${t.id}" aria-label="Bekijk ${t.title}">Bekijk</button></div></div></article>`).join("")
+    :`<div class="empty">Geen reizen gevonden. <button class="clear" id="clear2">Toon alle reizen</button></div>`;
+}
+const smooth=()=>matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth";
+function go(id){(id==="top"?document.body:$(id)).scrollIntoView({behavior:smooth()})}
+
+document.addEventListener("click",e=>{
+  const g=e.target.closest("[data-go]"); if(g){go(g.dataset.go);return}
+  const ty=e.target.closest("[data-type]"); if(ty){st.type=ty.dataset.type;$("sType").value=st.type;render();if(ty.classList.contains("cat"))go("reizen");return}
+  if(e.target.id==="clear"||e.target.id==="clear2"){st.type="";st.dest="";$("sType").value="";$("sDest").value="";render();return}
+  const tr=e.target.closest("[data-trip]"); if(tr){openTrip(tr.dataset.trip);return}
+});
+$("search").addEventListener("submit",e=>{e.preventDefault();st.type=$("sType").value;st.dest=$("sDest").value;render();go("reizen")});
+
+/* trip panel with one-step request form */
+let cur=null;
+function dates(t){return t.months.map(m=>{const [y,mm]=m.split("-").map(Number);const d=new Date(y,mm-1,1);while(d.getDay()!==6)d.setDate(d.getDate()+1);return {key:m,label:`${d.getDate()} ${MNAME[mm-1]} ${y}`}})}
+function openTrip(id){
+  const t=TRIPS.find(x=>x.id===id); cur=t;
+  $("panel").innerHTML=`<div class="img">${img(t.kind,false)}<button class="x" id="x" aria-label="Sluiten">×</button></div>
+  <div class="in">
+    <h2 id="pTitle">${t.title}</h2>
+    <div class="info">${TYPE[t.type]} · ${t.days} dagen · ${t.route.join(" → ")}</div>
+    <p class="intro">${t.intro}</p>
+    <ul>${t.incl.map(x=>`<li>${x}</li>`).join("")}</ul>
+    <form class="form" id="req" novalidate>
+      <h3>Vraag deze reis aan</h3>
+      <div class="pair">
+        <div><label for="rDate">Vertrekdatum</label><select id="rDate">${dates(t).map(d=>`<option>${d.label}</option>`).join("")}</select></div>
+        <div><label for="rPax">Aantal personen</label><select id="rPax">${[1,2,3,4,5,6].map(n=>`<option ${n===2?"selected":""}>${n}</option>`).join("")}</select></div>
+      </div>
+      <div class="pair">
+        <div><label for="rName">Je naam</label><input id="rName" autocomplete="name"></div>
+        <div><label for="rMail">E-mailadres</label><input id="rMail" type="email" autocomplete="email" inputmode="email"></div>
+      </div>
+      <div class="total"><div><small>Totaal voor <span id="paxTxt">2 personen</span></small><strong id="tot"></strong></div><small>Je betaalt nog niets</small></div>
+      <p class="err" id="err" hidden></p>
+      <button class="btn btn-primary" type="submit">Vraag aan</button>
+    </form>
+  </div>`;
+  const upd=()=>{const n=+$("rPax").value;$("tot").textContent=fmt(t.price*n);$("paxTxt").textContent=n+(n===1?" persoon":" personen")};
+  upd(); $("rPax").onchange=upd;
+  $("req").onsubmit=e=>{e.preventDefault();
+    const name=$("rName").value.trim(), mail=$("rMail").value.trim();
+    const err=!name?"Vul je naam in.":!/^\S+@\S+\.\S+$/.test(mail)?"Vul een geldig e-mailadres in, bijvoorbeeld naam@voorbeeld.nl.":"";
+    if(err){$("err").textContent=err;$("err").hidden=false;return}
+    $("req").outerHTML=`<div class="form done"><div class="ar" lang="ar">شكرا</div><h3>Bedankt, ${name.split(" ")[0]}!</h3>
+      <p>We hebben je aanvraag voor ${t.title} ontvangen en mailen je binnen één werkdag naar ${mail}.</p>
+      <p style="font-size:.82rem;margin-top:10px">Prototype: er is niets verstuurd.</p>
+      <button class="btn btn-line" id="close2" style="margin-top:12px">Terug naar de reizen</button></div>`;
+    $("close2").onclick=closeTrip;
+  };
+  $("overlay").hidden=false; document.body.style.overflow="hidden"; $("x").onclick=closeTrip; $("x").focus();
+}
+function closeTrip(){$("overlay").hidden=true;document.body.style.overflow=""}
+$("overlay").addEventListener("click",e=>{if(e.target.id==="overlay")closeTrip()});
+document.addEventListener("keydown",e=>{if(e.key==="Escape"&&!$("overlay").hidden)closeTrip()});
+
+render();
+</script>
+</body>
+</html>
